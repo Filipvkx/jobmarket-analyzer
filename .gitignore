@@ -1,0 +1,13 @@
+# Zmienne środowiskowe
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+env/
+
+# Środowisko IDE i systemowe
+.vscode/
+.idea/
+.DS_Store
