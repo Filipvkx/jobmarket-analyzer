@@ -38,3 +38,10 @@ def delete_offer(offer_id: int, db: Session = Depends(get_db)):
     if db_delete_offer is None:
         raise HTTPException(status_code=404, detail="Oferta o podanym ID nie istnieje")
     return db_delete_offer
+
+@app.put("/offers/{offer_id}", response_model=schemas.JobOfferResponse)
+def update_offer(offer_id: int, offer_data: schemas.JobOfferCreate, db: Session = Depends(get_db)):
+    db_update_offer = crud.update_job_offer_by_id(db, offer_id=offer_id, new_offer_data=offer_data)
+    if db_update_offer is None:
+        raise HTTPException(status_code=404, detail="Oferta o podanym ID nie istnieje")
+    return db_update_offer

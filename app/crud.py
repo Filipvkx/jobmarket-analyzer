@@ -30,3 +30,13 @@ def delete_job_offer_by_id(db: Session,offer_id: int):
         return db_offer
     return None
         
+def update_job_offer_by_id(db: Session, offer_id: int, new_offer_data: schemas.JobOfferCreate):
+    db_offer = db.query(models.JobOffer).filter(models.JobOffer.id == offer_id).first()
+
+    if db_offer:
+        for key, value in new_offer_data.model_dump().items():
+            setattr(db_offer, key, value) 
+        db.commit()
+        db.refresh(db_offer)
+        return db_offer       
+    return None
