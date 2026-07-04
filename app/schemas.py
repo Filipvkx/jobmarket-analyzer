@@ -8,7 +8,9 @@ class JobOfferCreate(BaseModel):
     location: str
     salary_min: Optional[int] = None
     salary_max: Optional[int] = None
-    url = str
+    url: str
+    requirements: Optional[str] = None
+    is_remote: bool = False
 
 #co nasze API zwraca
 class JobOfferResponse(JobOfferCreate):

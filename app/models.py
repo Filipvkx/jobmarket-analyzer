@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean
 from app.database import Base
 
 class JobOffer(Base):
@@ -11,5 +11,7 @@ class JobOffer(Base):
     salary_min = Column(Integer, nullable=True) #nullable ponieważ nie zawsze widełki musza być podane
     salary_max = Column(Integer, nullable=True)
     url = Column(String, unique=True)
+    requirements = Column(String, nullable=True)
+    is_remote = Column(Boolean, default=False)
 
 
